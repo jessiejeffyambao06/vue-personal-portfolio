@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jessie Jeff Yambao</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" type="image/png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["ui-sans-serif","system-ui","Segoe UI","Roboto","Helvetica","Arial","Apple Color Emoji","Segoe UI Emoji"]
+            },
+            keyframes: {
+              floaty: { "0%,100%": { transform: "translateY(0)" }, "50%": { transform: "translateY(-8px)" } },
+              shimmer: { "0%": { transform: "translateX(-55%)" }, "100%": { transform: "translateX(155%)" } },
+              glow: { "0%,100%": { opacity: .30 }, "50%": { opacity: .85 } },
+              marqueeR: { "0%": { transform: "translateX(-50%)" }, "100%": { transform: "translateX(0%)" } }
+            },
+            animation: {
+              floaty: "floaty 6.5s ease-in-out infinite",
+              shimmer: "shimmer 2.1s linear infinite",
+              glow: "glow 3.8s ease-in-out infinite",
+              marqueeR: "marqueeR 22s linear infinite"
+            },
+            boxShadow: {
+              soft: "0 18px 60px rgba(0,0,0,0.58)",
+              neon: "0 0 0 1px rgba(59,130,246,0.20), 0 18px 80px rgba(99,102,241,0.16)"
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      .no-scrollbar::-webkit-scrollbar{display:none;}
+      .no-scrollbar{ -ms-overflow-style:none; scrollbar-width:none; }
+      .marquee:hover .marquee-track { animation-play-state: paused; }
+      .edge-fade::before,
+      .edge-fade::after{
+        content:"";
+        position:absolute;
+        top:0; bottom:0;
+        width:72px;
+        pointer-events:none;
+        z-index:10;
+      }
+      .edge-fade::before{
+        left:0;
+        background: linear-gradient(to right, rgba(9,9,11,0.95), rgba(9,9,11,0));
+      }
+      .edge-fade::after{
+        right:0;
+        background: linear-gradient(to left, rgba(9,9,11,0.95), rgba(9,9,11,0));
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .marquee-track { animation: none !important; transform: translateX(0) !important; }
+        .animate-floaty, .animate-shimmer, .animate-glow { animation: none !important; }
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-zinc-950 text-zinc-100 selection:bg-fuchsia-500/25 selection:text-white">
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
